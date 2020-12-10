@@ -3,7 +3,9 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagLine1 = document.querySelector('.tagline-1');
 var coverTagLine2 = document.querySelector('.tagline-2');
-// coverImage.innerText = covers[2];
+
+var randomCvrBtn = document.querySelector('.random-cover-button');
+
 
 // We've provided a few variables below
 var savedCovers = [
@@ -11,22 +13,23 @@ var savedCovers = [
 ];
 var currentCover;
 
+window.onload = showRandomCover;
 // Add your event listeners here 👇
+randomCvrBtn.addEventListener('click', showRandomCover);
 
 
 // Create your event handlers and other functions here 👇
 
-
-// We've provided one function to get you started
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-window.onload = showRandomCover;
 
 function showRandomCover() {
   coverImage.src = covers[getRandomIndex(covers)];
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverTagLine1.innerText = descriptors[getRandomIndex(descriptors)];
   coverTagLine2.innerText = descriptors[getRandomIndex(descriptors)];
+}
+
+
+// We've provided one function to get you started
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
