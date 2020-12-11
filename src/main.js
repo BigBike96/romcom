@@ -6,6 +6,9 @@ var coverTagLine2 = document.querySelector('.tagline-2');
 
 var randomCvrBtn = document.querySelector('.random-cover-button');
 
+var customCvrBtn = document.querySelector('.make-new-button');
+var customFormView = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -17,6 +20,7 @@ window.onload = showRandomCover;
 // Add your event listeners here 👇
 randomCvrBtn.addEventListener('click', showRandomCover);
 
+customCvrBtn.addEventListener('click', showFormView);
 
 // Create your event handlers and other functions here 👇
 
@@ -27,6 +31,12 @@ function showRandomCover() {
   coverTagLine1.innerText = descriptors[getRandomIndex(descriptors)];
   coverTagLine2.innerText = descriptors[getRandomIndex(descriptors)];
 }
+
+function showFormView() {
+  homeView.classList.add('hidden');
+  customFormView.classList.remove('hidden');
+}
+
 
 
 // We've provided one function to get you started
