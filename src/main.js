@@ -9,6 +9,10 @@ var randomCvrBtn = document.querySelector('.random-cover-button');
 var customCvrBtn = document.querySelector('.make-new-button');
 var customFormView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
+var homeBtn = document.querySelector('.home-button');
+var viewCoversBtn = document.querySelector('.view-saved-button');
+var saveCvrBtn = document.querySelector('.save-cover-button');
+var savedCoversView = document.querySelector('.saved-view');
 
 // We've provided a few variables below
 var savedCovers = [
@@ -22,6 +26,8 @@ randomCvrBtn.addEventListener('click', showRandomCover);
 
 customCvrBtn.addEventListener('click', showFormView);
 
+viewCoversBtn.addEventListener('click', viewSavedCovers);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -34,7 +40,19 @@ function showRandomCover() {
 
 function showFormView() {
   homeView.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
+  saveCvrBtn.classList.add('hidden');
+  randomCvrBtn.classList.add('hidden');
   customFormView.classList.remove('hidden');
+}
+
+function viewSavedCovers() {
+  homeView.classList.add('hidden');
+  customFormView.classList.add('hidden');
+  homeBtn.classList.remove('hidden');
+  saveCvrBtn.classList.add('hidden');
+  randomCvrBtn.classList.add('hidden');
+  savedCoversView.classlist.remove('hidden');
 }
 
 
