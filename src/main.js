@@ -14,6 +14,15 @@ var viewCoversBtn = document.querySelector('.view-saved-button');
 var saveCvrBtn = document.querySelector('.save-cover-button');
 var savedCoversView = document.querySelector('.saved-view');
 
+var makeBookBtn = document.querySelector('.create-new-book-button');
+
+//form variables
+var inputCover = document.querySelector('.user-cover');
+var inputTitle = document.querySelector('.user-title');
+var inputFirstDesc = document.querySelector('.user-desc1');
+var inputSecondDesc = document.querySelector('.user-desc2');
+
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -30,6 +39,7 @@ viewCoversBtn.addEventListener('click', viewSavedCovers);
 
 homeBtn.addEventListener('click', showHomeView);
 
+makeBookBtn.addEventListener('click', createNewCover);
 // Create your event handlers and other functions here 👇
 
 
@@ -66,6 +76,23 @@ function showHomeView() {
   savedCoversView.classlist.add('hidden');
 }
 
+function createNewCover() {
+
+  var createdCover = new Cover(inputCover.value, inputTitle.value, inputFirstDesc.value, inputSecondDesc.value);
+  coverImage.src = createdCover.cover;
+  coverTitle.innerText = createdCover.title;
+  coverTagLine1.innerText = createdCover.tagline1;
+  coverTagLine2.innerText = createdCover.tagline2;
+
+  event.preventDefault();
+  //Push input values to respective arrays
+  covers.push(inputCover.value);
+  titles.push(inputTitle.value);
+  descriptors.push(inputFirstDesc.value);
+  descriptors.push(inputSecondDesc.value);
+
+  showHomeView();
+}
 
 
 // We've provided one function to get you started
