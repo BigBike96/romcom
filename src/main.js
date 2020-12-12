@@ -28,6 +28,8 @@ customCvrBtn.addEventListener('click', showFormView);
 
 viewCoversBtn.addEventListener('click', viewSavedCovers);
 
+homeBtn.addEventListener('click', showHomeView);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -53,6 +55,15 @@ function viewSavedCovers() {
   saveCvrBtn.classList.add('hidden');
   randomCvrBtn.classList.add('hidden');
   savedCoversView.classlist.remove('hidden');
+}
+
+function showHomeView() {
+  homeView.classList.remove('hidden');
+  customFormView.classList.add('hidden');
+  homeBtn.classList.add('hidden');
+  saveCvrBtn.classList.remove('hidden');
+  randomCvrBtn.classList.remove('hidden');
+  savedCoversView.classlist.add('hidden');
 }
 
 
