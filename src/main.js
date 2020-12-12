@@ -40,6 +40,8 @@ viewCoversBtn.addEventListener('click', viewSavedCovers);
 homeBtn.addEventListener('click', showHomeView);
 
 makeBookBtn.addEventListener('click', createNewCover);
+
+saveCvrBtn.addEventListener('click', saveCover);
 // Create your event handlers and other functions here 👇
 
 
@@ -92,6 +94,17 @@ function createNewCover() {
   descriptors.push(inputSecondDesc.value);
 
   showHomeView();
+}
+
+function saveCover() {
+// move data from inputs into savedCoversView
+var savedCoverInstance = new Cover(coverImage.src, coverTitle.innerText, coverTagLine1.innerText, coverTagLine2.innerText);
+savedCovers.push(savedCoverInstance);
+console.log(savedCovers);
+// coverImage.src =
+// coverTitle.innerText =
+// coverTagLine1.innerText =
+// coverTagLine2.innerText =
 }
 
 
