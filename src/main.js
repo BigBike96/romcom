@@ -14,6 +14,9 @@ var viewCoversBtn = document.querySelector('.view-saved-button');
 var saveCvrBtn = document.querySelector('.save-cover-button');
 var savedCoversView = document.querySelector('.saved-view');
 
+var savedCoversHTML = document.querySelector('.saved-covers-section');
+
+
 var makeBookBtn = document.querySelector('.create-new-book-button');
 
 //form variables
@@ -25,7 +28,7 @@ var inputSecondDesc = document.querySelector('.user-desc2');
 
 // We've provided a few variables below
 var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+  //new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 
@@ -59,6 +62,7 @@ function showFormView() {
   saveCvrBtn.classList.add('hidden');
   randomCvrBtn.classList.add('hidden');
   customFormView.classList.remove('hidden');
+  savedCoversView.classList.add('hidden');
 }
 
 function viewSavedCovers() {
@@ -67,7 +71,19 @@ function viewSavedCovers() {
   homeBtn.classList.remove('hidden');
   saveCvrBtn.classList.add('hidden');
   randomCvrBtn.classList.add('hidden');
-  savedCoversView.classlist.remove('hidden');
+  savedCoversView.classList.remove('hidden');
+
+  savedCoversHTML.innerHTML = "";
+    for(var i = 0; i < savedCovers.length; i++) {
+     savedCoversHTML.innerHTML +=
+     `<section class="main-cover" id=${savedCovers[i].id}>
+      <img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+      <img class="price-tag" src="./assets/price.png">
+      <img class="overlay" src="./assets/overlay.png">
+     </section>`
+    };
 }
 
 function showHomeView() {
@@ -76,16 +92,17 @@ function showHomeView() {
   homeBtn.classList.add('hidden');
   saveCvrBtn.classList.remove('hidden');
   randomCvrBtn.classList.remove('hidden');
-  savedCoversView.classlist.add('hidden');
+  savedCoversView.classList.add('hidden');
 }
 
 function createNewCover() {
 
-  currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagLine1.innerText, coverTagLine2.innerText);
   coverImage.src = inputCover.value;
   coverTitle.innerText = inputTitle.value;
   coverTagLine1.innerText = inputFirstDesc.value;
   coverTagLine2.innerText = inputSecondDesc.value;
+
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagLine1.innerText, coverTagLine2.innerText);
   // currentCover = new Cover(coverImage, coverTitle, coverTagLine1, coverTagLine2);
   event.preventDefault();
   //Push input values to respective arrays
@@ -99,11 +116,11 @@ function createNewCover() {
 
 function saveCover() {
 // move data from inputs into savedCoversView
- var savedCoverInstance = currentCover;
+//var savedCoverInstance = currentCover;
 // new Cover(coverImage.value, coverTitle.value, coverTagLine1.value, coverTagLine2.value);
-console.log(savedCoverInstance);
-if(!savedCovers.includes(savedCoverInstance)) {
-savedCovers.push(savedCoverInstance);
+//console.log(savedCoverInstance);
+if(!savedCovers.includes(currentCover)) {
+savedCovers.push(currentCover);
 console.log(savedCovers);
  }
 // coverImage.src =
