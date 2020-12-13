@@ -40,6 +40,8 @@ viewCoversBtn.addEventListener('click', viewSavedCovers);
 homeBtn.addEventListener('click', showHomeView);
 
 makeBookBtn.addEventListener('click', createNewCover);
+
+saveCvrBtn.addEventListener('click', saveCover);
 // Create your event handlers and other functions here 👇
 
 
@@ -48,6 +50,7 @@ function showRandomCover() {
   coverTitle.innerText = titles[getRandomIndex(titles)];
   coverTagLine1.innerText = descriptors[getRandomIndex(descriptors)];
   coverTagLine2.innerText = descriptors[getRandomIndex(descriptors)];
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagLine1.innerText, coverTagLine2.innerText);
 }
 
 function showFormView() {
@@ -78,12 +81,12 @@ function showHomeView() {
 
 function createNewCover() {
 
-  var createdCover = new Cover(inputCover.value, inputTitle.value, inputFirstDesc.value, inputSecondDesc.value);
-  coverImage.src = createdCover.cover;
-  coverTitle.innerText = createdCover.title;
-  coverTagLine1.innerText = createdCover.tagline1;
-  coverTagLine2.innerText = createdCover.tagline2;
-
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagLine1.innerText, coverTagLine2.innerText);
+  coverImage.src = inputCover.value;
+  coverTitle.innerText = inputTitle.value;
+  coverTagLine1.innerText = inputFirstDesc.value;
+  coverTagLine2.innerText = inputSecondDesc.value;
+  // currentCover = new Cover(coverImage, coverTitle, coverTagLine1, coverTagLine2);
   event.preventDefault();
   //Push input values to respective arrays
   covers.push(inputCover.value);
@@ -92,6 +95,21 @@ function createNewCover() {
   descriptors.push(inputSecondDesc.value);
 
   showHomeView();
+}
+
+function saveCover() {
+// move data from inputs into savedCoversView
+ var savedCoverInstance = currentCover;
+// new Cover(coverImage.value, coverTitle.value, coverTagLine1.value, coverTagLine2.value);
+console.log(savedCoverInstance);
+if(!savedCovers.includes(savedCoverInstance)) {
+savedCovers.push(savedCoverInstance);
+console.log(savedCovers);
+ }
+// coverImage.src =
+// coverTitle.innerText =
+// coverTagLine1.innerText =
+// coverTagLine2.innerText =
 }
 
 
